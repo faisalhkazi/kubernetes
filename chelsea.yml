@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: chelsea
+spec:
+   replicas: 1
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     name: chelsea
+   template:
+     metadata:
+       name: chelsearocks
+       labels:
+         name: chelsea
+     spec:
+      containers:
+        - name: drogba
+          image: nginx
+          ports:
+          - containerPort: 80

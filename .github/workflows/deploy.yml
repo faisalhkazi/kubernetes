@@ -23,9 +23,14 @@ jobs:
       run: |
         kubectl config view
 
-
-    - name: Apply Kubernetes manifests
+    - name: Delete existing resources (if necessary)
       run: |
-        kubectl apply -f deployment/ --validate=false 
+        kubectl delete -f deployment/ || true
+        kubectl delete -f pods/ || true
+        kubectl delete -f services/ || true
+
+    - name: Apply Kubernetes manifests forcefully
+      run: |
+        kubectl apply -f deployment/ --validate=false
         kubectl apply -f pods/ --validate=false
-        kubectl apply -f servicese/ --validate=false
+        kubectl apply -f services/ --validate=false

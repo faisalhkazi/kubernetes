@@ -22,3 +22,4 @@ jobs:
         kubectl apply -f deployment/
         kubectl apply -f pods/
         kubectl apply -f servicese/
+        kubectl apply -f support.yml

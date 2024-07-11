@@ -16,7 +16,7 @@ jobs:
     - name: Set up kubectl
       run: |
         mkdir -p $HOME/.kube
-        cp path/to/your/.kube/config $HOME/.kube/config
+        cp /home/kube/.kube/config $HOME/.kube/config
 
     - name: Verify kubectl configuration
       run: |

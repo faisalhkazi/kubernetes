@@ -23,8 +23,14 @@ jobs:
       run: |
         kubectl config view
 
+    - name: Debug File Paths
+      run: |
+        ls -la /home/kube/.minikube/profiles/minikube/
+        cat /home/kube/.minikube/profiles/minikube/client.crt
+        cat /home/kube/.minikube/profiles/minikube/client.key
+
     - name: Apply Kubernetes manifests
       run: |
-        kubectl apply -f deployment/
+        kubectl apply -f deployment/ --kubeconfig=$HOME/.kube/config
         kubectl apply -f pods/
         kubectl apply -f servicese/

@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: mancity
+spec:
+   replicas: 1
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     name: mancity
+   template:
+     metadata:
+       name: mancityrocks
+       labels:
+         name: mancity
+     spec:
+      containers:
+        - name: holland
+          image: httpd
+          ports:
+          - containerPort: 80

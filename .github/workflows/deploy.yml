@@ -24,4 +24,6 @@ jobs:
 
     - name: Apply Kubernetes manifests
       run: |
-        kubectl apply -f support.yml
+        kubectl apply -f deployment/
+        kubectl apply -f pods/
+        kubectl apply -f servicese/

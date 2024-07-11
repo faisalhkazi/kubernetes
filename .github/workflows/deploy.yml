@@ -15,7 +15,12 @@ jobs:
 
     - name: Set up kubectl
       run: |
-        echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
+        mkdir -p $HOME/.kube
+        cp path/to/your/.kube/config $HOME/.kube/config
+
+    - name: Verify kubectl configuration
+      run: |
+        kubectl config view
 
     - name: Apply Kubernetes manifests
       run: |
